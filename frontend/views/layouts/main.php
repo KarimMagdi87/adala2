@@ -89,9 +89,17 @@ FrontAsset::register($this);
     <!--div class="container"-->
    <div id="page-wrapper">
         <div class="container-fluid">
-            <?= Breadcrumbs::widget([
+            <!--?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]) ?>
+            ]) ?-->
+
+            <?=
+            Breadcrumbs::widget([
+                'homeLink' => ['label' => 'الرئيسية',
+                 'url' => Yii::$app->getHomeUrl()],
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]);
+            ?>
             <?= Alert::widget() ?>
             <?= $content ?>
         </div>
@@ -134,6 +142,7 @@ FrontAsset::register($this);
         });
 
         $(".primary").change(function(){
+            $(".image-load").css("visibility", "visible");
             var documentTypeId = $("#hidden").val();
             var table = "";
             var topicId = $(this).val();
@@ -159,6 +168,7 @@ FrontAsset::register($this);
                         // style: 'btn-info',
                         // size: 4
                     });
+                    //$(".image-load").css("visiblity", "hidden");
                 }
             });
 
@@ -180,13 +190,14 @@ FrontAsset::register($this);
                     $.each(response, function (i, item) {
 
                        table += '<tr>'+
-                        '<td data-title="إسم الوثيقة"><a href="<?= Yii::$app->getUrlManager()->getBaseUrl()."/site/document/" ?>'+item.documentId+'">'+ item.title +'</a></td>'+
+                        '<td data-title="إسم الوثيقة"><a target="_blank" href="<?= Yii::$app->getUrlManager()->getBaseUrl()."/site/document/" ?>'+item.documentId+'">'+ item.title +'</a></td>'+
                         '<td data-title="رقم الوثيقة">'+item.number+'</td>'+
                         '<td data-title="سنة الإصدار" class="numeric">'+item.year+'</td>'+
                         '<td data-title="تحميل" class="numeric"><a href="#"><img src="<?= Yii::$app->request->baseUrl ?>/img/download.png"></a></td>'+
                         '</tr>';
                     });
                     $(".resultdoc").append(table);
+                    $(".image-load").css("visibility", "hidden");
                 }
             });
 

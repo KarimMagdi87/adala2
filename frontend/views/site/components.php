@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <p> <i class="fa fa-asterisk"></i>&nbsp;قم بإختيار التصنيف الرئيسي ثم التصنيف الفرعي</p>
             <!--form class="form-inline clearfix"-->
             <form class="form-inline" role="form">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-5">
                     <!--select class="btn-group bootstrap-select selectpicker primary" maxlength="1000" required-->
                     <select id="basic" class="selectpicker show-tick form-control primary" data-live-search="true" required>
                        <option value="">اختر تصنيف رئيسي</option>
@@ -29,8 +29,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </form>
 
+            <div class="col-md-2 text-center image-load"><img src="<?= Yii::$app->request->baseUrl ?>/img/ajax-loader.gif" /></div>
+
             <form class="form-inline" role="form">
-                <div class="form-group col-md-6 secondarydiv">
+                <div class="form-group col-md-5 secondarydiv">
                     <!--select class="btn-group bootstrap-select selectpicker secondary"  maxlength="" required-->
                     <select id="basic2" class="selectpicker show-tick form-control secondary" data-live-search="true" required>
                         <option value="">اختر تصنيف فرعي</option>

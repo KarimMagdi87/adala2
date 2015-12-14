@@ -2,8 +2,14 @@
 
 /* @var $this yii\web\View */
 
+
+
+foreach($documentTypeName as $d){
+$name =  $d['name'];
+}
+
 $this->title = $document['Title'];
-//$this->params['breadcrumbs'][] = ['label' => 'components', 'url' => ['site/'.$documenttypename['Name'].'/'.$document['DocumentTypeId']]];
+$this->params['breadcrumbs'][] = ['label' => $name, 'url' => ['site/components/'.$document['DocumentTypeId']]];
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>

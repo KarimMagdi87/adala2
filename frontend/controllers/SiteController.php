@@ -2,6 +2,7 @@
 namespace frontend\controllers;
 
 use Yii;
+use yii\db\Query;
 use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
@@ -337,7 +338,6 @@ class SiteController extends Controller
             $documentTypeId = $_POST['documentTypeId'];
             $returnArray = array();
             $sql = 'SELECT * FROM document WHERE documenttypeid ='.$documentTypeId.' AND topicid ='.$topicId;
-            //print_r($sql); exit;
             $data = Document::findBySql($sql)->all();
             //print_r($data);
             foreach($data as $d){
@@ -355,20 +355,21 @@ class SiteController extends Controller
 
 
     public function actionDocument($id){
-        //echo $id;
+
+        $connection = \Yii::$app->db;
+
         $data = Document::find()
             ->where("documentid=".$id)->one();
 
-       /* $sql = 'SELECT documenttype.name
-                        FROM document, documenttype
-                        WHERE documenttype.documenttypeid = document.documenttypeid
-                        AND document.documentid ='.$id;
+        $sql = $connection->createCommand('SELECT documenttype.name
+                                           FROM document, documenttype
+                                           WHERE documenttype.documenttypeid = document.documenttypeid
+                                           AND document.documentid ='.$id);
 
-        $documenttypename = Documenttype::findBySql($sql)->all();
-        print_r($documenttypename); exit;*/
+        $documentTypeName = $sql->queryAll();
 
         $documentItem = Documentitem::find()->where("documentid=".$id)->all();
-        return $this->render('document', array('document'=> $data, 'documentitem'=>$documentItem));
+        return $this->render('document', array('document'=> $data, 'documentitem'=>$documentItem, 'documentTypeName'=>$documentTypeName));
     }
 
 
