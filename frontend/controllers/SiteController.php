@@ -374,6 +374,7 @@ class SiteController extends Controller
 
 
 
+//Before Function for routing
 
     public function beforeAction($action) {
         $this->enableCsrfValidation = false;
