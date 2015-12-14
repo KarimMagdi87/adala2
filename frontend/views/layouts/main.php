@@ -171,7 +171,7 @@ FrontAsset::register($this);
                     $.each(response, function (i, item) {
 
                        table += '<tr>'+
-                        '<td data-title="إسم الوثيقة"><a href="">'+ item.title +'</a></td>'+
+                        '<td data-title="إسم الوثيقة"><a href="<?= Yii::$app->getUrlManager()->getBaseUrl()."/site/document/" ?>'+item.documentId+'">'+ item.title +'</a></td>'+
                         '<td data-title="رقم الوثيقة">'+item.number+'</td>'+
                         '<td data-title="سنة الإصدار" class="numeric">'+item.year+'</td>'+
                         '<td data-title="تحميل" class="numeric"><a href="#"><img src="<?= Yii::$app->request->baseUrl ?>/img/download.png"></a></td>'+
@@ -205,7 +205,7 @@ FrontAsset::register($this);
                     //$(".secondary").html('');
                     $.each(response, function (i, item) {
                         table += '<tr class="secondtr">'+
-                            '<td data-title="إسم الوثيقة"><a href="">'+ item.title +'</a></td>'+
+                            '<td data-title="إسم الوثيقة"><a href="<?= Yii::$app->getUrlManager()->getBaseUrl()."/site/document/" ?>'+item.documentId+'">'+ item.title +'</a></td>'+
                             '<td data-title="رقم الوثيقة">'+item.number+'</td>'+
                             '<td data-title="سنة الإصدار" class="numeric">'+item.year+'</td>'+
                             '<td data-title="تحميل" class="numeric"><a href="#"><img src="<?= Yii::$app->request->baseUrl ?>/img/download.png"></a></td>'+

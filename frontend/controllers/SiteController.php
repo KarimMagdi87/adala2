@@ -16,6 +16,7 @@ use backend\models\Topictype;
 use backend\models\Documenttype;
 use backend\models\Topic;
 use backend\models\Document;
+use backend\models\Documentitem;
 
 /**
  * Site controller
@@ -350,6 +351,24 @@ class SiteController extends Controller
             echo json_encode($returnArray);
 
         }
+    }
+
+
+    public function actionDocument($id){
+        //echo $id;
+        $data = Document::find()
+            ->where("documentid=".$id)->one();
+
+       /* $sql = 'SELECT documenttype.name
+                        FROM document, documenttype
+                        WHERE documenttype.documenttypeid = document.documenttypeid
+                        AND document.documentid ='.$id;
+
+        $documenttypename = Documenttype::findBySql($sql)->all();
+        print_r($documenttypename); exit;*/
+
+        $documentItem = Documentitem::find()->where("documentid=".$id)->all();
+        return $this->render('document', array('document'=> $data, 'documentitem'=>$documentItem));
     }
 
 
