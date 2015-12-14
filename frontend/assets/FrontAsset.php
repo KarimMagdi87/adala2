@@ -22,11 +22,13 @@ class FrontAsset extends AssetBundle
         'css/bootstrap-rtl.min.css',
         'css/style.css',
         'font-awesome/css/font-awesome.min.css',
+        'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/css/bootstrap-select.min.css',
         //'css/site.css',
     ];
     public $js = [
         'js/jquery.js',
         'js/bootstrap.min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

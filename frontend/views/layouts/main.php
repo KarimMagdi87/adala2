@@ -137,7 +137,9 @@ FrontAsset::register($this);
             var documentTypeId = $("#hidden").val();
             var table = "";
             var topicId = $(this).val();
-            var result = '<option value="">اختر تصنيف فرعي</option>';
+            var result = '<select id="basic2" class="selectpicker show-tick form-control secondary" data-live-search="true" required>'+
+                         '<option value="">اختر تصنيف فرعي</option>';
+
             $.ajax({
                 type : "POST",
                 url : '<?= Yii::$app->getUrlManager()->getBaseUrl()."/site/secondary" ?>',
@@ -149,7 +151,14 @@ FrontAsset::register($this);
                     $.each(response, function (i, item) {
                         result += '<option value="'+item.topicId+'">'+item.name+'</option>';
                     });
-                    $(".secondary").append(result);
+                    result +='</select>';
+                    $('.secondarydiv').html('');
+                    $('.secondarydiv').append(result);
+                    $('#basic2').selectpicker({
+                        liveSearch: true
+                        // style: 'btn-info',
+                        // size: 4
+                    });
                 }
             });
 
@@ -185,10 +194,9 @@ FrontAsset::register($this);
             });
 
 
-        $(".secondary").change(function(){
+        $(document).on('change', '.secondary', function(){
             var documentTypeId = $("#hidden").val();
             $(".resultdoc").html('');
-
             var table = "";
             var topicId = $(this).val();
             //ar result = '<option value="">اختر تصنيف فرعي</option>';
@@ -212,8 +220,16 @@ FrontAsset::register($this);
                             '</tr>';
                     });
                     $(".resultdoc").append(table);
+
                 }
             });
         });
+
+
+        /*$('#basic2').selectpicker({
+            liveSearch: true
+           // style: 'btn-info',
+           // size: 4
+        });*/
     });
 </script>

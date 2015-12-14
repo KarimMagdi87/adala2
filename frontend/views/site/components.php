@@ -16,17 +16,23 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-md-12">
         <section>
             <p> <i class="fa fa-asterisk"></i>&nbsp;قم بإختيار التصنيف الرئيسي ثم التصنيف الفرعي</p>
-            <form class="form-inline clearfix">
+            <!--form class="form-inline clearfix"-->
+            <form class="form-inline" role="form">
                 <div class="form-group col-md-6">
-                    <select class="btn-group bootstrap-select selectpicker primary" maxlength="1000" required>
+                    <!--select class="btn-group bootstrap-select selectpicker primary" maxlength="1000" required-->
+                    <select id="basic" class="selectpicker show-tick form-control primary" data-live-search="true" required>
                        <option value="">اختر تصنيف رئيسي</option>
                         <?php foreach($topic as $t){ ?>
                         <option value="<?php echo $t['TopicId']; ?>"><?php echo $t['Name']; ?></option>
                         <?php } ?>
                     </select>
                 </div>
-                <div class="form-group col-md-6">
-                    <select class="btn-group bootstrap-select selectpicker secondary"  maxlength="1000" required>
+            </form>
+
+            <form class="form-inline" role="form">
+                <div class="form-group col-md-6 secondarydiv">
+                    <!--select class="btn-group bootstrap-select selectpicker secondary"  maxlength="" required-->
+                    <select id="basic2" class="selectpicker show-tick form-control secondary" data-live-search="true" required>
                         <option value="">اختر تصنيف فرعي</option>
                     </select>
                 </div>
